@@ -20,6 +20,7 @@
   "homepage": "https://github.com/jaoukes/contact-form#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-validator": "^6.3.0",
     "nodemon": "^2.0.1"
   }
 }
