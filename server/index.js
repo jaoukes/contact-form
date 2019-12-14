@@ -5,11 +5,15 @@ let express = require('express');
 let app = express();
 let port = 3000;
 
-app.use(express.json());
+// Middleware
+app.use(express.json()); // Allows to read JSON sent in 'req.body'
 
+// Routes go here
 
+// Default Error Handler
+app.use(function (req, res, next, error) {
 
-
+});
 
 
 function handleServerListen() {

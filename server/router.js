@@ -6,6 +6,7 @@ const router = express.Router();
 
 
 // Renders the home page
+// Routes go here!
 router.get('/', (req, res) => {
   res.render('home');
 });
