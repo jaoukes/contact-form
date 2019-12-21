@@ -10,7 +10,8 @@ app.use(express.json()); // Allows to read JSON sent in 'req.body'
 
 // Route to create an entry when the user submits their form
 // TODO: Be more specific with your path, what IS is creating, also don't use verbs in paths, as paths should be nouns
-app.post('/user/', async function (req, res, next) {
+app.post('/user/form', function (req, res, next) {
+  response.send("User Form Submitted");
   // I'd worry about validation later, the first thing you should after this route and the next route "works"
 //    const formErrors = {};
 //    if (!req.body.name) {
@@ -22,10 +23,12 @@ app.post('/user/', async function (req, res, next) {
 });
 
 // Route to get a listing of all submissions
-
+app.put('/user/results', function (req, res, next){
+  response.send("All User Submissions");
+});
 
 // Route to create or register a user
-app.post('user/create', async function (req, res, next){
+app.post('user/create', function (req, res, next){
   response.send("User Registered");
 });
 
@@ -37,7 +40,9 @@ app.post('user/create', async function (req, res, next){
 // });
 
 // Route to log a registered user in to create a session
-
+app.put('/user/session', function (req, res, next){
+  response.send("User Session");
+});
 // app.post('/create-user', async function (req, res, next) {
 //   const formErrors = {};
 //   if (!req.body.name) {
