@@ -8,13 +8,6 @@ let port = 3000;
 // Middleware
 app.use(express.json()); // Allows to read JSON sent in 'req.body'
 
-// Routes go here
-router.post('/' function (req, res) {
-  console.log(req.body.b);
-  res.send('Hello Wolrd!');
-});
-
-
 // Route to create an entry when the user submits their form
 router.post('/create-submission', async function (req, res, next) {
   const formErrors = {};
