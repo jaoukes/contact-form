@@ -14,6 +14,37 @@ router.post('/' function (req, res) {
   res.send('Hello Wolrd!');
 });
 
+
+// Route to create an entry when the user submits their form
+router.post('/create', async function (req, res, next) {
+  const formErrors = {};
+  if (!req.body.name) {
+    formErrors.name = 'Required';
+  }
+  if (!req.body.region) {
+    formErrors.region = 'Required';
+  }
+// Route to create or register a user
+router.get('/create', function (req, res) {
+  res.render('create', {
+    pageId: 'create',
+    title: 'Create a User',
+    formValues: {},
+    formErrors: {},
+  });
+});
+// Route to log a registered user in to create a session
+// Route to get a listing of all submissions
+router.post('/create', async function (req, res, next) {
+  // Validation
+  const formErrors = {};
+  if (!req.body.name) {
+    formErrors.name = 'Required';
+  }
+  if (!req.body.region) {
+    formErrors.region = 'Required';
+  }
+
 // Default Error Handler
 // This is always last!
 app.use(function (error, req, res, next) {
