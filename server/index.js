@@ -9,7 +9,7 @@ let port = 3000;
 app.use(express.json()); // Allows to read JSON sent in 'req.body'
 
 // Route to create an entry when the user submits their form
-router.post('/create-submission', async function (req, res, next) {
+router.post('/create', async function (req, res, next) {
   const formErrors = {};
   if (!req.body.name) {
     formErrors.name = 'Required';
@@ -17,22 +17,21 @@ router.post('/create-submission', async function (req, res, next) {
   if (!req.body.region) {
     formErrors.region = 'Required';
   }
+};
 // Route to create or register a user
 router.get('/create-user', function (req, res) {
   res.render('create-user', {
-    pageId: 'create-user',
-    title: 'Create a User',
     formValues: {},
     formErrors: {},
   });
 });
 // Route to log a registered user in to create a session
-router.post('/create', async function (req, res, next) {
+router.post('/create-user', async function (req, res, next) {
   const formErrors = {};
   if (!req.body.name) {
     formErrors.name = 'Required';
   }
-}
+  }
 // Route to get a listing of all submissions
 
 
