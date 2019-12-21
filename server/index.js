@@ -27,15 +27,14 @@ router.get('/create-user', function (req, res) {
   });
 });
 // Route to log a registered user in to create a session
-// Route to get a listing of all submissions
 router.post('/create', async function (req, res, next) {
   const formErrors = {};
   if (!req.body.name) {
     formErrors.name = 'Required';
   }
-  if (!req.body.region) {
-    formErrors.region = 'Required';
-  }
+}
+// Route to get a listing of all submissions
+
 
 // Default Error Handler
 // This is always last!
