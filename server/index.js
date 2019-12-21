@@ -9,7 +9,9 @@ let port = 3000;
 app.use(express.json()); // Allows to read JSON sent in 'req.body'
 
 // Route to create an entry when the user submits their form
-router.post('/create', async function (req, res, next) {
+// TODO: Be more specific with your path, what IS is creating, also don't use verbs in paths, as paths should be nouns
+app.post('/create', async function (req, res, next) {
+  // I'd worry about validation later, the first thing you should after this route and the next route "works"
   const formErrors = {};
   if (!req.body.name) {
     formErrors.name = 'Required';
@@ -17,22 +19,26 @@ router.post('/create', async function (req, res, next) {
   if (!req.body.region) {
     formErrors.region = 'Required';
   }
-};
-// Route to create or register a user
-router.get('/create-user', function (req, res) {
-  res.render('create-user', {
-    formValues: {},
-    formErrors: {},
-  });
 });
-// Route to log a registered user in to create a session
-router.post('/create-user', async function (req, res, next) {
-  const formErrors = {};
-  if (!req.body.name) {
-    formErrors.name = 'Required';
-  }
-  }
+
 // Route to get a listing of all submissions
+
+
+// Route to create or register a user
+// app.get('/create-user', function (req, res) {
+//   res.render('create-user', {
+//     formValues: {},
+//     formErrors: {},
+//   });
+// });
+
+// Route to log a registered user in to create a session
+// app.post('/create-user', async function (req, res, next) {
+//   const formErrors = {};
+//   if (!req.body.name) {
+//     formErrors.name = 'Required';
+//   }
+// });
 
 
 // Default Error Handler
