@@ -6,18 +6,18 @@ let app = express();
 let port = 3000;
 
 // Middleware
-app.use(express.json()); // Allows to read JSON sent in 'req.body'
+//app.use(express.json()); // Allows to read JSON sent in 'req.body'
 
-let util = require('util');
-let fs = require('fs');
-let path = require('path');
+//let util = require('util');
+//let fs = require('fs');
+//let path = require('path');
 
 // Create versions of `fs` methods we'll be using to return promises
-let readFile = util.promisify(fs.readFile);
-let writeFile = util.promisify(fs.writeFile);
+//let readFile = util.promisify(fs.readFile);
+//let writeFile = util.promisify(fs.writeFile);
 
-// Declare where the DB path is relative from where our `package.json` is
-let dbPath = path.resolve('src/db.json');
+// DB Path
+// let dbPath = path.resolve('server/db.json');
 
 
 // Submit form
@@ -36,7 +36,7 @@ app.post('/contact_us/form', function (request, response, next) {
 
 // Get a list of all submissions
 app.get('/contact_us/results', async function (req, res, next){
-  response.send("All User Submissions");
+  response.readFile;
   console.log("All User Submissions");
 });
 
@@ -70,7 +70,7 @@ app.post('/user/login', async function (req, res, next){
 // This is always last!
 app.use(function (error, req, res, next) {
   console.error(error); // this is here to see errors for debugging purposes
-  res.sendStatus(500); // Send 500 status code - "Internal Server Error"
+  res.sendStatus(500).send('Something broke!'); // Send 500 status code - "Internal Server Error"
 });
 
 function handleServerListen() {
