@@ -6,7 +6,7 @@ let app = express();
 let port = 3000;
 
 // Middleware
-//app.use(express.json()); // Allows to read JSON sent in 'req.body'
+app.use(express.json()); // Allows to read JSON sent in 'req.body'
 
 //let util = require('util');
 //let fs = require('fs');
