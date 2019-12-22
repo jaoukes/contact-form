@@ -1,4 +1,18 @@
 [
-	{ "a": 1 },
-	{ "b": 2 }
+	{
+		"email": "hacker@evil.org",
+		"name": "Bob",
+		"phone": "1111111111"
+	},
+	
+	{
+		"email": "a@example.org",
+		"name": "Alice",
+		"phone": "2222222222"
+	},
+	{
+		"email": "foo@example.org",
+		"name": "Maebelle",
+		"phone": "3333333333"
+	}
 ]
