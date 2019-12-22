@@ -23,8 +23,9 @@ app.use(express.json()); // Allows to read JSON sent in 'req.body'
 // Submit form
 // TODO: Be more specific with your path, what IS is creating, also don't use verbs in paths, as paths should be nouns
 app.post('/contact_us/form', function (request, response, next) {
+  response.send();
   console.log("User Form Submitted");
-  // I'd worry about validation later, the first thing you should after this route and the next route "works"
+// I'd worry about validation later, the first thing you should after this route and the next route "works"
 //    const formErrors = {};
 //    if (!req.body.name) {
 //      formErrors.name = 'Required';
@@ -36,7 +37,7 @@ app.post('/contact_us/form', function (request, response, next) {
 
 // Get a list of all submissions
 app.get('/contact_us/results', async function (req, res, next){
-  response.readFile;
+  response.send();
   console.log("All User Submissions");
 });
 
@@ -77,4 +78,3 @@ function handleServerListen() {
   console.log(`Server is listening on port ${port}`);
 }
 app.listen(port, handleServerListen);
-
