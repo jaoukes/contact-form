@@ -19,22 +19,19 @@ app.post('/contact_us/form', function (request, response, next) {
 
 // Register a User
 app.post('/user/register', async function (request, response, next) {
-  response.send("User Registered");
-  console.log("User Registered")
+  response.send('User Registered');
 });
 
 
 // Log in a user (create session)
 app.post('/user/login', async function (request, response, next){
-  response.send("User Session");
-  console.log("User Session");
+  response.send('User Session');
 });
 
 
 // Get a list of all submissions
 app.get('/contact_us/results', async function (request, response, next){
   response.send();
-  console.log("All User Submissions");
 });
 
 
