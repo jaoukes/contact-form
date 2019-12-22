@@ -8,6 +8,18 @@ let port = 3000;
 // Middleware
 app.use(express.json()); // Allows to read JSON sent in 'req.body'
 
+let util = require('util');
+let fs = require('fs');
+let path = require('path');
+
+// Create versions of `fs` methods we'll be using to return promises
+let readFile = util.promisify(fs.readFile);
+let writeFile = util.promisify(fs.writeFile);
+
+// Declare where the DB path is relative from where our `package.json` is
+let dbPath = path.resolve('src/db.json');
+
+
 // Submit form
 // TODO: Be more specific with your path, what IS is creating, also don't use verbs in paths, as paths should be nouns
 app.post('/contact_us/form', function (request, response, next) {
