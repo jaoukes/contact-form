@@ -8,8 +8,7 @@ let port = 3000;
 // Middleware
 app.use(express.json()); // Allows to read JSON sent in 'req.body'
 
-// These aren't in our package.json
-// This is because they're built into Node.js
+
 let util = require('util');
 let fs = require('fs');
 let path = require('path');
@@ -21,7 +20,9 @@ let writeFile = util.promisify(fs.writeFile);
 // DB Path
 let dbPath = path.resolve('server/db.json');
 
+
 // Routes
+// :id (placeholder)
 
 // Submit form
 app.post('/contact_us/form/:id', async function (request, response, next) {
