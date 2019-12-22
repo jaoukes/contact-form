@@ -8,10 +8,6 @@ let port = 3000;
 // Middleware
 app.use(express.json()); // Allows to read JSON sent in 'req.body'
 
-app.post('/', function (request, response) {
-  response.send('Hello, world!');
-});
-
 
 // Submit form
 app.post('/contact_us/form', function (request, response, next) {
