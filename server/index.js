@@ -20,10 +20,27 @@ let writeFile = util.promisify(fs.writeFile);
 // DB Path
 let dbPath = path.resolve('server/db.json');
 
+async function read() {
+  let fileContents = await readFile(dbPath);
+  let allCars = JSON.parse(fileContents); // Parse the buffer of JSON into a JS array
+  return allCars;
+}
+
+async function write(dbItems) {
+  let json = JSON.stringify(dbItems, null, 2);
+  await writeFile(dbPath, json);
+}
+
+async function addCar(newCar) {
+  // Step One: Read the contents of the database
+  let allCars = await read();
+  // Step Two: Add the new car to what we get out of the database
+  allCars.push(newCar);
+  // Step Three: Write to our database all the cars plus the new one added (the value from step #2)
+  await write(allCars);
+}
 
 // Routes
-// :id (placeholder)
-
 // Submit form
 app.post('/contact_us/form/:id', async function (request, response, next) {
   await db.addUser(req.body);
