@@ -34,15 +34,10 @@ async function addSubmission(newSubmission) {
   await writeFile(allSubmissions);
 };
 
-// Export read and addItem, but does not write
-module.exports = {
-  addSubmission: addSubmission,
-};
-
 // Routes
 // Submit form
 app.post('/contact_us/form', async function (request, response, next) {
-  await db.addUser(req.body);
+  await addSubmission(req.body);
   response.send();
   next();
 });
