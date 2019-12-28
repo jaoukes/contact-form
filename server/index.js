@@ -41,7 +41,7 @@ module.exports = {
 
 // Routes
 // Submit form
-app.post('/contact_us/form/', async function (request, response, next) {
+app.post('/contact_us/form', async function (request, response, next) {
   await db.addUser(req.body);
   response.send();
   next();
@@ -49,19 +49,19 @@ app.post('/contact_us/form/', async function (request, response, next) {
 
 
 // Register a User
-app.post('/user/register/', async function (request, response, next) {
+app.post('/user/register', async function (request, response, next) {
   response.send('User Registered');
 });
 
 
 // Log in a user (create session)
-app.post('/user/login/', async function (request, response, next){
+app.post('/user/login', async function (request, response, next){
   response.send('User Session');
 });
 
 
 // Get a list of all submissions
-app.get('/contact_us/results/', function (){
+app.get('/contact_us/results', function (){
   let submissions = await db.Submissions();
   console.log('Submissions:');
   console.log(submissions);
