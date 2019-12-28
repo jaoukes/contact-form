@@ -20,25 +20,24 @@ let writeFile = util.promisify(fs.writeFile);
 // DB Path
 let dbPath = path.resolve('server/db.json');
 
+// Read the content of db.json
 async function read() {
   let fileContents = await readFile(dbPath);
-  let allCars = JSON.parse(fileContents); // Parse the buffer of JSON into a JS array
-  return allCars;
+  let allSubmissions = JSON.parse(fileContents);
+  return allSubmissions;
 }
 
-async function write(dbItems) {
-  let json = JSON.stringify(dbItems, null, 2);
-  await writeFile(dbPath, json);
-}
+// Add submission to db, with read and write combo
+async function addSubmission(newSubmission) {
+  let allSubmissions = await read ();
+  allSubmissions.push(newSubmission);
+  await writeFile(allSubmissions);
+};
 
-async function addCar(newCar) {
-  // Step One: Read the contents of the database
-  let allCars = await read();
-  // Step Two: Add the new car to what we get out of the database
-  allCars.push(newCar);
-  // Step Three: Write to our database all the cars plus the new one added (the value from step #2)
-  await write(allCars);
-}
+// Export read and addItem, but does not write
+module.exports = {
+  addSubmission: addSubmission,
+};
 
 // Routes
 // Submit form
