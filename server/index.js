@@ -34,6 +34,20 @@ async function addSubmission(newSubmission) {
   await writeFile(allSubmissions);
 };
 
+// Middleware for form
+function validateSubmissionMiddleware (request, response, next) {
+  let form = request.body;
+  if (!form.name) {
+    response.status(400).send('"name" is a required field');
+  } else if (!form.email) {
+    response.status(400).send('"email" is a required field');
+  } else if (!form.message) {
+    response.status(400).send('"message" is a required field');
+  } else {
+    next();
+  }
+};
+
 // Routes
 // Submit form
 app.post('/contact_us/form', async function (request, response, next) {
