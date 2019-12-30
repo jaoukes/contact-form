@@ -34,6 +34,20 @@ async function addSubmission(newSubmission) {
   await writeFile(allSubmissions);
 };
 
+// Middleware for form
+function validateSubmissionMiddleware (request, response, next) {
+  let form = request.body;
+  if (!form.name) {
+    response.status(400).send('"name" is a required field');
+  } else if (!form.email) {
+    response.status(400).send('"email" is a required field');
+  } else if (!form.message) {
+    response.status(400).send('"message" is a required field');
+  } else {
+    next();
+  }
+};
+
 // Routes
 // Submit form
 app.post('/contact_us/form', async function (request, response, next) {
@@ -54,15 +68,20 @@ app.post('/user/login', async function (request, response, next){
   response.send('User Session');
 });
 
-
 // Get a list of all submissions
 app.get('/contact_us/results', async function () {
+<<<<<<< HEAD
   let submissions = await db.Submissions();
   let allSubmissions = JSON.parse(fileContents);
   response.send(allSubmissions);
   return submissions;
+=======
+let submissions = await db.submissions();
+let allSubmissions = JSON.parse(fileContents);
+response.send(fileContents);
+return submissions;
+>>>>>>> 828af6be480bb2919b4e0d12480f8a6df4ea47ee
 });
-
 
 
 // Default Error Handler
