@@ -68,15 +68,13 @@ app.post('/user/login', async function (request, response, next){
   response.send('User Session');
 });
 
-
 // Get a list of all submissions
-app.get('/contact_us/results', async function read() {
-  let allSubmissions = JSON.parsed(fileContents);
-  response.send(allSubmissions);
-  return allSubmissions;
+app.get('/contact_us/results', async function () {
+let submissions = await db.submissions();
+let allSubmissions = JSON.parse(fileContents);
+response.send(fileContents);
+return submissions;
 });
-
-
 
 
 // Default Error Handler
