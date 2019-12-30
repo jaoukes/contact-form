@@ -71,8 +71,8 @@ app.post('/user/login', async function (request, response, next){
 
 // Get a list of all submissions
 app.get('/contact_us/results', async function () {
-  let submissions = await db.Submissions();
-  return submissions;
+  let allSubmissions = await db.Submissions();
+  allSubmissions.push(newSubmission);
   console.log(submissions);
 });
 
