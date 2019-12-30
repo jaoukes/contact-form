@@ -70,11 +70,12 @@ app.post('/user/login', async function (request, response, next){
 
 
 // Get a list of all submissions
-app.get('/contact_us/results', async function () {
-  let allSubmissions = JSON.parse(fileContents);
+app.get('/contact_us/results', async function read() {
+  let allSubmissions = JSON.parsed(fileContents);
   response.send(allSubmissions);
   return allSubmissions;
 });
+
 
 
 
