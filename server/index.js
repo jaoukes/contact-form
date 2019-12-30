@@ -73,7 +73,7 @@ app.post('/user/login', async function (request, response, next){
 app.get('/contact_us/results', async function () {
   let submissions = await db.submissions;
   let allSubmissions = JSON.parse(fileContents);
-}
+  console.log(submissions);
 });
 
 
