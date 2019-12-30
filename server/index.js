@@ -18,7 +18,7 @@ let readFile = util.promisify(fs.readFile);
 let writeFile = util.promisify(fs.writeFile);
 
 // DB Path
-let dbPath = path.resolve('server/db.json');
+let db = path.resolve('server/db.json');
 
 // Read the content of db.json
 async function read() {
@@ -70,7 +70,7 @@ app.post('/user/login', async function (request, response, next){
 
 // Get a list of all submissions
 app.get('/contact_us/results', async function () {
-  let submissions = await dbPath.Submissions();
+  let submissions = await db.Submissions();
   let allSubmissions = JSON.parse(fileContents);
   response.send(allSubmissions);
   return submissions;
